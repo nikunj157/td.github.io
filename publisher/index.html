@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<title>
+Publisher Page
+</title>
+<script>
+  // Test right flags are there.
+  const page_body = document.createElement('div');
+  text=""
+  if (!navigator.runAdAuction) {
+    text += "FLEDGE runAdAuction seems to be disabled. Start Chrome with right flags.";
+  }
+  page_body.innerHTML += text;
+  if (document.body) 
+  	document.body.appendChild(page_body);
+</script>
+
+<script type="module">
+async function runAuction() { 
+
+  if (navigator.runAdAuction) {
+    const ar = await navigator.runAdAuction({
+        seller: 'https://nikunja.users.x20web.corp.google.com',
+        decisionLogicUrl: 'https://nikunja.users.x20web.corp.google.com/td/scripts/ssp.js',
+        trustedScoringSignalsUrl: 'https://nikunja.users.x20web.corp.google.com/td/fake_endpoint',
+        interestGroupBuyers: ['https://nikunja.users.x20web.corp.google.com'],
+        auctionSignals: {key: "auction signals"},
+        sellerSignals: {key: "seller signals"},
+        perBuyerSignals: {"https://nikunja.users.x20web.corp.google.com": {key: "got the signal"}},
+      });
+    if (ar === null) {
+      const d = document.createElement('div');
+      d.innerHTML = "No turtledove winner";
+      document.body.appendChild(d);
+    } else {
+      const iframe = document.createElement('iframe');
+      iframe.src = ar;
+      document.body.appendChild(iframe);
+    }
+  }
+}
+// export run auction
+window.runAuction = runAuction;
+</script>
+</head>
+<body>
+<h1 id="heading1">Publisher site to execute auction</h1>
+<h1>Please enter following Auction parameters & press Submit.</h1>
+<form id="auction_form" onsubmit="return false;">
+</form>
+
+<div id="result"></div>
+</body>
+</html>
