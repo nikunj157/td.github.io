@@ -19,7 +19,7 @@ Publisher Page
 <script type="module">
 async function runAuction() { 
   if (navigator.runAdAuction) {
-    var dsps = document.getElementById('dsp_list').value.split(",");
+    var dsps = document.getElementById('dsp_list').value.split(",").filter(n => n);
     const ar = await navigator.runAdAuction({
         seller: 'https://nikunj157.github.io/td.github.io',
         decisionLogicUrl: 'https://nikunj157.github.io/td.github.io/scripts/ssp.js',
