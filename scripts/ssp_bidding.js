@@ -7,6 +7,6 @@ function reportResult(auctionConfig, browserSignals) {
   return {
     'success': true,
     'signalsForWinner': {'signalForWinner': 1},
-    'reportUrl': 'https://nikunj157.github.io/td.github.io/scripts/fakeEndPoint',
+    'reportUrl': 'https://td-1ha7.onrender.com/scripts/fakeEndPoint',
   };
 }
