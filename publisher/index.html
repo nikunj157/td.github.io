@@ -24,12 +24,12 @@ async function runAuction() {
     var dsps = document.getElementById('dsp_list').value.split(",").filter(n => n);
     const ar = await navigator.runAdAuction({
         seller: domain_name,
-        decisionLogicUrl: domain_name + 'scripts/ssp.js',
+        decisionLogicUrl: domain_name + 'scripts/ssp_bidding.js',
         trustedScoringSignalsUrl: domain_name + 'fake_endpoint',
         interestGroupBuyers: dsps,
         auctionSignals: {key: "auction signals"},
         sellerSignals: {key: "seller signals"},
-        perBuyerSignals: {domain_name: {key: "got the signal"}},
+        perBuyerSignals: {[domain_name]: {key: "got the signal"}},
       });
     if (ar === null) {
       const d = document.createElement('div');
