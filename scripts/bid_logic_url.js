@@ -14,5 +14,5 @@ function generateBid(
 
 function reportWin(
   auctionSignals, perBuyerSignals, sellerSignals, browserSignals) {
-  sendReportTo("https://nikunja.users.x20web.corp.google.com/td/scripts/fakeEndPoint");
+  sendReportTo("https://nikunj157.github.io/td.github.io/scripts/fakeEndPoint");
 }
