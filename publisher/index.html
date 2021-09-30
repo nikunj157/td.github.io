@@ -18,7 +18,6 @@ Publisher Page
 
 <script type="module">
 async function runAuction() { 
-
   if (navigator.runAdAuction) {
     const ar = await navigator.runAdAuction({
         seller: 'https://nikunj157.github.io/td.github.io',
@@ -46,10 +45,12 @@ window.runAuction = runAuction;
 </head>
 <body>
 <h1 id="heading1">Publisher site to execute auction</h1>
-<h1>Please enter following Auction parameters & press Submit.</h1>
+<h3>Please enter following Auction parameters & press Submit.</h3>
 <form id="auction_form" onsubmit="return false;">
+  <label for="buyers">Buyer list separated by commas:</label>
+  <input type="text" id="buyers" name="Buyer" value='https://nikunj157.github.io/td.github.io/' cols="80" rows="5"><br><br>
+  <input type="submit" value="Submit" onclick="runAuction();">
 </form>
-
 <div id="result"></div>
 </body>
 </html>
