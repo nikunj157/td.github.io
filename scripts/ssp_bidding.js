@@ -7,6 +7,6 @@ function reportResult(auctionConfig, browserSignals) {
   return {
     'success': true,
     'signalsForWinner': {'signalForWinner': 1},
-    'reportUrl': 'https://nikunja.users.x20web.corp.google.com/td/scripts/fakeEndPoint',
+    'reportUrl': 'https://nikunj157.github.io/td.github.io/scripts/fakeEndPoint',
   };
 }
