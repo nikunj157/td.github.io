@@ -21,13 +21,13 @@ async function runAuction() {
 
   if (navigator.runAdAuction) {
     const ar = await navigator.runAdAuction({
-        seller: 'https://nikunja.users.x20web.corp.google.com',
-        decisionLogicUrl: 'https://nikunja.users.x20web.corp.google.com/td/scripts/ssp.js',
-        trustedScoringSignalsUrl: 'https://nikunja.users.x20web.corp.google.com/td/fake_endpoint',
-        interestGroupBuyers: ['https://nikunja.users.x20web.corp.google.com'],
+        seller: 'https://nikunj157.github.io/td.github.io',
+        decisionLogicUrl: 'https://nikunj157.github.io/td.github.io/scripts/ssp.js',
+        trustedScoringSignalsUrl: 'https://nikunj157.github.io/td.github.io/fake_endpoint',
+        interestGroupBuyers: ['https://nikunj157.github.io/td.github.io'],
         auctionSignals: {key: "auction signals"},
         sellerSignals: {key: "seller signals"},
-        perBuyerSignals: {"https://nikunja.users.x20web.corp.google.com": {key: "got the signal"}},
+        perBuyerSignals: {"https://nikunj157.github.io/td.github.io": {key: "got the signal"}},
       });
     if (ar === null) {
       const d = document.createElement('div');
