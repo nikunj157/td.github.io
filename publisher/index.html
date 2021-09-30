@@ -18,16 +18,18 @@ Publisher Page
 
 <script type="module">
 async function runAuction() { 
+  console.log("runAuction() called");
   if (navigator.runAdAuction) {
+    var domain_name = "https://td-1ha7.onrender.com/";	
     var dsps = document.getElementById('dsp_list').value.split(",").filter(n => n);
     const ar = await navigator.runAdAuction({
-        seller: 'https://nikunj157.github.io/td.github.io',
-        decisionLogicUrl: 'https://nikunj157.github.io/td.github.io/scripts/ssp.js',
-        trustedScoringSignalsUrl: 'https://nikunj157.github.io/td.github.io/fake_endpoint',
+        seller: domain_name,
+        decisionLogicUrl: domain_name + 'scripts/ssp.js',
+        trustedScoringSignalsUrl: domain_name + 'fake_endpoint',
         interestGroupBuyers: dsps,
         auctionSignals: {key: "auction signals"},
         sellerSignals: {key: "seller signals"},
-        perBuyerSignals: {"https://nikunj157.github.io/td.github.io": {key: "got the signal"}},
+        perBuyerSignals: {domain_name: {key: "got the signal"}},
       });
     if (ar === null) {
       const d = document.createElement('div');
@@ -48,7 +50,7 @@ window.runAuction = runAuction;
 <h1 id="heading1">Publisher site to execute auction</h1>
 <h3>Please enter following Auction parameters & press Submit.</h3>
 <form id="auction_form" onsubmit="return false;">
-  <textarea name="message" id="dsp_list" rows="10" cols="30">https://nikunj157.github.io/td.github.io,</textarea><br/><br/>
+  <textarea name="message" id="dsp_list" rows="10" cols="30">https://td-1ha7.onrender.com/,</textarea><br/><br/>
   <input type="submit" value="Submit" onclick="runAuction();">
 </form>
 <div id="result"></div>
