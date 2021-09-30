@@ -2,5 +2,33 @@
 <meta charset="utf-8">
 <head>
 <title>Demo homepage</title>
+<script>
+  var result_container = document.getElementById('result');
+  var result_text = ''; 
+  var invalid = false;
+  if (!navigator.joinAdInterestGroup) {
+    invalid = true;
+    result_text += "FLEDGE joinAdInterestGroup not enabled.</br></br>";
+  }
+  result_text += "</br></br>";
+  if (!navigator.runAdAuction) {
+    invalid = true;
+    result_text += "FLEDGE runAdAuction seems not enabled.</br></br>";
+  }
+  if (invalid) {
+    result_text += "FLEDGE joinAdInterestGroup not enabled. Please use dev version of Chrome with right flags. Run this:</br></br>";
+    result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
+  }
+  result_container.innerHTML += result_text;
+</script>
 </head>
+<body>
+  <h2> Quick demo to play with Turtledove </h2>
+  <div id="result">
+  </div>
+  <ol>
+    <li>Join Interest Group on this page: <a href="https://td-1ha7.onrender.com/join_ig">https://td-1ha7.onrender.com/join_ig</a></li>
+    <li>Run Auction on this page: <a href="https://td-1ha7.onrender.com/publisher">https://td-1ha7.onrender.com/publisher</a></li>
+  </ol>
+</body>
 </html>
