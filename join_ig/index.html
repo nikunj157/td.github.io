@@ -3,8 +3,10 @@
 <head>
 <title>JoinIg Page</title>
 <script>
-function joinIg(event) {
-	var result_container = document.getElementById('result');
+var domain_name = "https://td-1ha7.onrender.com/";	
+document.getElementById("owner").value = domain_name;
+function joinIg(event) {  
+  var result_container = document.getElementById('result');
   var result_text = '<h1>Result</h1>';  
   var ig_owner = document.getElementById('owner').value;
   var num_igs = document.getElementById('count').value;
@@ -19,23 +21,23 @@ function joinIg(event) {
         let ig = {
           owner: ig_owner,
           name: ig_name,
-          biddingLogicUrl: "https://nikunj157.github.io/td.github.io/scripts/bid_logic_url.js",
+          biddingLogicUrl: domain_name + "scripts/bid_logic_url.js",
           userBiddingSignals: {},
           ads: [
             {
-              renderUrl: "https://nikunj157.github.io/td.github.io/scripts/adg1.html",
+              renderUrl: domain_name + "scripts/adg1.html",
               metadata: {
                 bid: 1
               },
             },
             {
-              renderUrl: "https://nikunj157.github.io/td.github.io/scripts/adg2.html",
+              renderUrl: domain_name + "scripts/adg2.html",
               metadata: {
                 bid: 2
               },
             },
             {
-              renderUrl: "https://nikunj157.github.io/td.github.io/scripts/adg3.html",
+              renderUrl: domain_name + "scripts/adg3.html",
               metadata: {
                 bid: 3
               },
@@ -59,7 +61,7 @@ function joinIg(event) {
 <h1>Please enter following IG attributes & press Submit.</h1>
 <form id="ig_form" onsubmit="return false;">
   <label for="owner">IG Owner:</label>
-  <input type="text" id="owner" name="IG Owner" value='https://nikunj157.github.io/td.github.io/' size="100"><br><br>
+  <input type="text" id="owner" name="IG Owner" value='https://td-1ha7.onrender.com/' size="100"><br><br>
   <label for="count">Number of IGs to join:</label>
   <input type="text" id="count" name="Number of IGs" value='1'><br><br>  
   <input type="submit" value="Submit" onclick="joinIg();">
