@@ -3,6 +3,7 @@
 <head>
 <title>Demo homepage</title>
 <script>
+  window.onload = function(){
   var result_container = document.getElementById('result');
   var result_text = ''; 
   var invalid = false;
@@ -20,6 +21,7 @@
     result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
   }
   result_container.innerHTML += result_text;
+};
 </script>
 </head>
 <body>
