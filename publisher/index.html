@@ -55,8 +55,9 @@ async function runAuction() {
       iframe.src = ar;
     }
     d.innerHTML += "<br><br>";
-    document.body.appendChild(d);    
-    document.body.appendChild(iframe);
+    document.body.appendChild(d);
+    if (iframe)
+      document.body.appendChild(iframe);
   }
 }
 // export run auction
