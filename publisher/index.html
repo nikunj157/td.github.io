@@ -32,7 +32,7 @@ async function runAuction() {
   if (navigator.runAdAuction) {
     var domain_name = getDomainName();	
     var dsps = document.getElementById('dsp_list').value.split(",").filter(n => n);
-    const ar = await navigator.runAdAuction({
+    let auctionConfig = {
         seller: domain_name,
         decisionLogicUrl: domain_name + 'scripts/ssp_bidding.js',
         trustedScoringSignalsUrl: domain_name + 'fake_endpoint',
@@ -40,9 +40,13 @@ async function runAuction() {
         auctionSignals: {key: "auction signals"},
         sellerSignals: {key: "seller signals"},
         perBuyerSignals: {[dsps[0]]: {key: "got the signal"}},
-      });
+    };
+    const ar = await navigator.runAdAuction(auctionConfig);
+    const d = document.createElement('div');
+    d.innerHTML += "<br>"
+    d.innerHTML += JSON.stringify(auctionConfig);
+    d.innerHTML += "<br><br>"
     if (ar === null) {
-      const d = document.createElement('div');
       d.innerHTML = "No turtledove winner";
       document.body.appendChild(d);
     } else {
