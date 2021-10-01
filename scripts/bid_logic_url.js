@@ -9,7 +9,7 @@ function generateBid(
   
   return {'ad': 'anything',
           'bid': ad.metadata.bid,
-          'render': ad.renderUrl};
+          'render': ad.renderUrl + "?bid="+ ad.metadata.bid};
 }
 
 function reportWin(
