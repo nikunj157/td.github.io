@@ -1,3 +1,14 @@
-<html>
-<h1> Ad creative 2 </h1>
+<html><script>
+function getDomainName() {
+  var domain_name = window.location.href;	
+  return domain_name; 
+}
+window.onload = function() {
+  document.getElementById("domain_name").innerHTML = getDomainName();
+}  
+</script>
+<body>
+<h1>Ad 2</h1>
+<div id = "domain_name"></div>
+</body>
 </html>
