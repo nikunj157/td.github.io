@@ -6,21 +6,31 @@ Publisher Page
 </title>
 <script>
   // Test right flags are there.
-  const page_body = document.createElement('div');
-  text="";
-  if (!navigator.runAdAuction) {
-    text += "FLEDGE runAdAuction seems to be disabled. Start Chrome with right flags.";
+  function getDomainName() {
+    var domain_name = window.location.href;	
+    if (domain_name.indexOf("publisher/") > 0)
+      domain_name = domain_name.substr(0,domain_name.indexOf("publisher/"));
+    return domain_name; 
   }
-  page_body.innerHTML += text;
-  if (document.body) 
-  	document.body.appendChild(page_body);
+  window.onload = function() {
+    var domain_name = getDomainName();
+    document.getElementById("dsp_list").value = domain_name;
+    const page_body = document.createElement('div');
+    text="";
+    if (!navigator.runAdAuction) {
+      text += "FLEDGE runAdAuction seems to be disabled. Start Chrome with right flags.";
+    }
+    page_body.innerHTML += text;
+    if (document.body) 
+      document.body.appendChild(page_body);
+} 
 </script>
 
 <script type="module">
 async function runAuction() { 
   console.log("runAuction() called");
   if (navigator.runAdAuction) {
-    var domain_name = "https://td-1ha7.onrender.com/";	
+    var domain_name = getDomainName();	
     var dsps = document.getElementById('dsp_list').value.split(",").filter(n => n);
     const ar = await navigator.runAdAuction({
         seller: domain_name,
@@ -29,7 +39,7 @@ async function runAuction() {
         interestGroupBuyers: dsps,
         auctionSignals: {key: "auction signals"},
         sellerSignals: {key: "seller signals"},
-        perBuyerSignals: {[domain_name]: {key: "got the signal"}},
+        perBuyerSignals: {[dsps[0]]: {key: "got the signal"}},
       });
     if (ar === null) {
       const d = document.createElement('div');
