@@ -6,8 +6,8 @@
 <script>
 function getDomainName() {
   var domain_name = window.location.href;	
-  if (domain_name.indexOf("join_ig/") > 0)
-    domain_name = domain_name.substr(0,domain_name.indexOf("join_ig/"));
+  if (domain_name.indexOf("join_ig") > 0)
+    domain_name = domain_name.substr(0,domain_name.indexOf("join_ig"));
   return domain_name; 
 }
 window.onload = function() {
