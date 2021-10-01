@@ -4,15 +4,22 @@
 <head>
 <title>JoinIg Page</title>
 <script>
-window.onload = function() {
+function getDomainName() {
   var domain_name = window.location.href;	
+  if (domain_name.indexOf("join_ig/") > 0)
+    domain_name = domain_name.substr(0,domain_name.indexOf("join_ig/"));
+  return domain_name; 
+}
+window.onload = function() {
+  var domain_name = getDomainName();
   document.getElementById("owner").value = domain_name;
 }  
 function joinIg(event) {  
-  var domain_name = window.location.href;	
+  var domain_name = getDomainName();
   var result_container = document.getElementById('result');
   var result_text = '<h1>Result</h1>';  
   var ig_owner = document.getElementById('owner').value;
+  
   if (document.getElementById("use_all").checked) {
     domain_name = ig_owner; 
     domain_name += domain_name.endsWith('/')? "" : "/";
