@@ -1,14 +1,22 @@
 <!DOCTYPE html>
+<html>
 <meta charset="utf-8">
 <head>
 <title>JoinIg Page</title>
 <script>
-var domain_name = "https://td-1ha7.onrender.com/";	
-document.getElementById("owner").value = domain_name;
+window.onload = function() {
+  var domain_name = window.location.href;	
+  document.getElementById("owner").value = domain_name;
+}  
 function joinIg(event) {  
+  var domain_name = window.location.href;	
   var result_container = document.getElementById('result');
   var result_text = '<h1>Result</h1>';  
   var ig_owner = document.getElementById('owner').value;
+  if (document.getElementById("use_all").checked) {
+    domain_name = ig_owner; 
+    domain_name += domain_name.endsWith('/')? "" : "/";
+  }
   var num_igs = document.getElementById('count').value;
   
   if (!navigator.joinAdInterestGroup) {
@@ -63,7 +71,9 @@ function joinIg(event) {
   <label for="owner">IG Owner:</label>
   <input type="text" id="owner" name="IG Owner" value='https://td-1ha7.onrender.com/' size="100"><br><br>
   <label for="count">Number of IGs to join:</label>
-  <input type="text" id="count" name="Number of IGs" value='1'><br><br>  
+  <input type="text" id="count" name="Number of IGs" value='1'><br><br>
+  <input type="checkbox" id="use_all" name="use_all" value="use_all">
+  <label for="use_all">Use for all IG URLs</label><br><br>
   <input type="submit" value="Submit" onclick="joinIg();">
 </form>
 <div id="result">
