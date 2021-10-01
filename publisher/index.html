@@ -8,13 +8,14 @@ Publisher Page
   // Test right flags are there.
   function getDomainName() {
     var domain_name = window.location.href;	
-    if (domain_name.indexOf("publisher/") > 0)
-      domain_name = domain_name.substr(0,domain_name.indexOf("publisher/"));
+    if (domain_name.indexOf("publisher") > 0)
+      domain_name = domain_name.substr(0,domain_name.indexOf("publisher"));
     return domain_name; 
   }
   window.onload = function() {
     var domain_name = getDomainName();
     document.getElementById("dsp_list").value = domain_name;
+    document.getElementById("dsp_list").innerHTML = domain_name;
     const page_body = document.createElement('div');
     text="";
     if (!navigator.runAdAuction) {
@@ -45,15 +46,17 @@ async function runAuction() {
     const d = document.createElement('div');
     d.innerHTML += "<br>"
     d.innerHTML += JSON.stringify(auctionConfig);
-    d.innerHTML += "<br><br>"
+    d.innerHTML += "<br><br>";
+    var iframe;
     if (ar === null) {
-      d.innerHTML = "No turtledove winner";
-      document.body.appendChild(d);
+      d.innerHTML += "No turtledove winner";
     } else {
-      const iframe = document.createElement('iframe');
+      iframe = document.createElement('iframe');
       iframe.src = ar;
-      document.body.appendChild(iframe);
     }
+    d.innerHTML += "<br><br>";
+    document.body.appendChild(d);    
+    document.body.appendChild(iframe);
   }
 }
 // export run auction
@@ -64,7 +67,7 @@ window.runAuction = runAuction;
 <h1 id="heading1">Publisher site to execute auction</h1>
 <h3>Please enter following Auction parameters & press Submit.</h3>
 <form id="auction_form" onsubmit="return false;">
-  <textarea name="message" id="dsp_list" rows="10" cols="30">https://td-1ha7.onrender.com/</textarea><br/><br/>
+  <textarea name="message" id="dsp_list" rows="10" cols="30">https://nikunj.xyz/</textarea><br/><br/>
   <input type="submit" value="Submit" onclick="runAuction();">
 </form>
 <div id="result"></div>
