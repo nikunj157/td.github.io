@@ -3,26 +3,32 @@
 <head>
 <title>Demo homepage</title>
 <script>
-  window.onload = function(){
-  var result_container = document.getElementById('result');
-  var result_text = ''; 
-  var invalid = false;
-  if (!navigator.joinAdInterestGroup) {
-    invalid = true;
-    result_text += "FLEDGE joinAdInterestGroup not enabled.";
-  }
-  result_text += "</br></br>";
-  if (!navigator.runAdAuction) {
-    invalid = true;
-    result_text += "FLEDGE runAdAuction seems not enabled.";
-  }
-  if (invalid) {
-    result_text = "<h2>Browser Check</h2>" + result_text;
+  window.onload = function() {
+    var hostname = window.location.href;
+    document.getElementById('join_link').href='join_ig';
+    document.getElementById('join_link').innerHTML=hostname+'join_ig';
+    document.getElementById('pub_link').href='publisher';
+    document.getElementById('pub_link').innerHTML=hostname+'publisher';
+    
+    var result_container = document.getElementById('result');
+    var result_text = ''; 
+    var invalid = false;
+    if (!navigator.joinAdInterestwww.gmail.comGroup) {
+      invalid = true;
+      result_text += "FLEDGE joinAdInterestGroup not enabled.";
+    }
     result_text += "</br></br>";
-    result_text += "Please use a dev version of Chrome with right flags. Run this:</br></br>";
-    result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
-  }
-  result_container.innerHTML += result_text;
+    if (!navigator.runAdAuction) {
+      invalid = true;
+      result_text += "FLEDGE runAdAuction seems not enabled.";
+    }
+    if (invalid) {
+      result_text = "<h2>Browser Check</h2>" + result_text;
+      result_text += "</br></br>";
+      result_text += "Please use a dev version of Chrome with right flags. Run this:</br></br>";
+      result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
+    }
+    result_container.innerHTML += result_text;
 };
 </script>
 </head>
@@ -31,8 +37,8 @@
   </div>
   <h2>Quick Steps to run FLEDGE:</h2>
   <ol>
-    <li>Join Interest Group on this page: <a href="https://td-1ha7.onrender.com/join_ig">https://td-1ha7.onrender.com/join_ig</a></li>
-    <li>Run Auction on this page: <a href="https://td-1ha7.onrender.com/publisher">https://td-1ha7.onrender.com/publisher</a></li>
+    <li>Join Interest Group on this page: <a id="join_link" href="https://td-1ha7.onrender.com/join_ig">https://td-1ha7.onrender.com/join_ig</a></li>
+    <li>Run Auction on this page: <a id="pub_link" href="https://td-1ha7.onrender.com/publisher">https://td-1ha7.onrender.com/publisher</a></li>
   </ol>
 </body>
 </html>
