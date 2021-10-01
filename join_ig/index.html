@@ -24,38 +24,38 @@ function joinIg(event) {
     result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
   } else {
     for (let i = 0; i < num_igs; i++) {
-     let ig_name = "interest-group-" + i;
+      let ig_name = "interest-group-" + i;
+      let ig = {
+        owner: ig_owner,
+        name: ig_name,
+        biddingLogicUrl: domain_name + "scripts/bid_logic_url.js",
+        userBiddingSignals: {},
+        ads: [
+          {
+            renderUrl: domain_name + "ads/adg1.html",
+            metadata: {
+              bid: 1
+            },
+          },
+          {
+            renderUrl: domain_name + "ads/adg2.html",
+            metadata: {
+              bid: 2
+            },
+          },
+          {
+            renderUrl: domain_name + "ads/adg3.html",
+            metadata: {
+              bid: 3
+            },
+          },
+        ],
+      };
      try {
-        let ig = {
-          owner: ig_owner,
-          name: ig_name,
-          biddingLogicUrl: domain_name + "scripts/bid_logic_url.js",
-          userBiddingSignals: {},
-          ads: [
-            {
-              renderUrl: domain_name + "ads/adg1.html",
-              metadata: {
-                bid: 1
-              },
-            },
-            {
-              renderUrl: domain_name + "ads/adg2.html",
-              metadata: {
-                bid: 2
-              },
-            },
-            {
-              renderUrl: domain_name + "ads/adg3.html",
-              metadata: {
-                bid: 3
-              },
-            },
-          ],
-        };
         navigator.joinAdInterestGroup(ig, 10000);
         result_text += "joined interest group:" + ig.name + ":</br>" + JSON.stringify(ig) + "</br></br>";
       } catch (error) {
-      	result_text += "<br/> Error for " + ig_name + "<br/>";
+      	result_text += "<br/> Error for " + JSON.stringify(ig) + "<br/>";
         result_text += error;
       }
     }
