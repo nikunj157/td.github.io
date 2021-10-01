@@ -4,7 +4,9 @@ function getDomainName() {
   return domain_name; 
 }
 window.onload = function() {
-  document.getElementById("domain_name").innerHTML = getDomainName();
+  document.getElementById("domain_name").innerHTML = getDomainName() + "<br><br>";
+  for (elt of window.location.search.split("&")) 
+    document.getElementById("domain_name").innerHTML += elt  + "<br>";
 }  
 </script>
 <body>
