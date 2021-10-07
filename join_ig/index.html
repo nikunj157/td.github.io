@@ -10,9 +10,19 @@ function getDomainName() {
     domain_name = domain_name.substr(0,domain_name.indexOf("join_ig"));
   return domain_name; 
 }
+function getOwnerFromUrl() {
+  var params =  window.location.search.replace("?","").split("&");
+  for (let param of params) {
+    if (param.split("=")[0] == 'owner') {
+      return param.split("=")[1];
+    }
+  }
+  return "";
+}
 window.onload = function() {
   var domain_name = getDomainName();
-  document.getElementById("owner").value = domain_name;
+  var owner_from_url = getOwnerFromUrl();
+  document.getElementById("owner").value = (owner_from_url.length == 0)? domain_name : owner_from_url;
 }  
 function joinIg(event) {  
   var domain_name = getDomainName();
