@@ -51,7 +51,11 @@ async function runAuction() {
     if (ar === null) {
       d.innerHTML += "No turtledove winner";
     } else {
-      iframe = document.createElement('iframe');
+      if (document.getElementById("use_fenced").checked) {
+        iframe = document.createElement('fencedframe');
+      } else {
+        iframe = document.createElement('iframe');
+      }
       iframe.src = ar;
     }
     d.innerHTML += "<br><br>";
@@ -70,6 +74,8 @@ window.runAuction = runAuction;
 <form id="auction_form" onsubmit="return false;">
   <label for="message">Comma Separated list of DSPs:<br></label>
   <textarea name="message" id="dsp_list" rows="10" cols="30">https://nikunj.xyz/</textarea><br/><br/>
+  <input type="checkbox" id="use_fenced" name="use_fenced" value="use_fenced">
+  <label for="use_fenced">Use fenced frames for rendering</label><br><br>
   <input type="submit" value="Submit" onclick="runAuction();">
 </form>
 <div id="result"></div>
