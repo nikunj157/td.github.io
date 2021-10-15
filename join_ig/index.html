@@ -38,7 +38,7 @@ function joinIg(event) {
   
   if (!navigator.joinAdInterestGroup) {
     result_text += "Turtledove not enabled. Please use dev version of Chrome with right flags. Run this:</br></br>";
-    result_text += "  google-chrome-unstable --enable-features=kFledgeInterestGroups,kFledgeInterestGroupAPI,FledgeInterestGroups,FledgeInterestGroupAPI</br>";
+    result_text += "  google-chrome-unstable --enable-features=AdInterestGroupAPI,InterestGroupStorage,Fledge,FencedFrames</br>";
   } else {
     for (let i = 0; i < num_igs; i++) {
       let ig_name = "interest-group-" + i;
