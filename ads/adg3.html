@@ -5,10 +5,12 @@ function getDomainName() {
 }
 window.onload = function() {
   document.getElementById("domain_name").innerHTML = getDomainName();
+  let u = new URL(getDomainName());
+  document.getElementById("heading").innerHTML += " Ig Number " + u.searchParams.get('ig_number');
 }  
 </script>
 <body>
-<h1>Ad 3</h1>
+<h1 id = "heading">Ad 3</h1>
 <div id = "domain_name"></div>
 </body>
 </html>
