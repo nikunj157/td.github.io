@@ -34,6 +34,9 @@ function joinIg(event) {
     domain_name = ig_owner; 
     domain_name += domain_name.endsWith('/')? "" : "/";
   }
+  var use_caching = document.getElementById("use_cached_bids").checked;
+  var cache_path = use_caching ? "scripts" : "scripts_uncached";
+
   var num_igs = document.getElementById('count').value;
   
   if (!navigator.joinAdInterestGroup) {
@@ -45,7 +48,7 @@ function joinIg(event) {
       let ig = {
         owner: ig_owner,
         name: ig_name,
-        biddingLogicUrl: domain_name + "scripts/bid_logic_url.js",
+        biddingLogicUrl: domain_name + cache_path + "/bid_logic_url.js",
         userBiddingSignals: {},
         ads: [
           {
@@ -96,10 +99,12 @@ function joinIg(event) {
 <form id="ig_form" onsubmit="return false;">
   <label for="owner">IG Owner:</label>
   <input type="text" id="owner" name="IG Owner" value='https://td-1ha7.onrender.com/' size="100"><br><br>
-  <label for="count">Number of IGs to join:</label>
-  <input type="text" id="count" name="Number of IGs" value='1'><br><br>
+  <input type="checkbox" id="use_cached_bids" name="use_cached_bids" value="use_cached_bids" checked>
+  <label for="use_cached_bids">Use cached bidding script</label><br><br>
   <input type="checkbox" id="use_all" name="use_all" value="use_all">
   <label for="use_all">Use for all IG URLs</label><br><br>
+  <label for="count">Number of IGs to join:</label>
+  <input type="text" id="count" name="Number of IGs" value='1'><br><br>
   <input type="submit" value="Submit" onclick="joinIg();">
 </form>
 <div id="result">
