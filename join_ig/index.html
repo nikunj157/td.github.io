@@ -35,7 +35,7 @@ function joinIg(event) {
     domain_name += domain_name.endsWith('/')? "" : "/";
   }
   var use_caching = document.getElementById("use_cached_bids").checked;
-  var cache_path = use_caching ? "scripts" : "scripts_uncached";
+  var cache_path = use_caching ? "scripts" : "scripts_no_cache";
 
   var num_igs = document.getElementById('count').value;
   
