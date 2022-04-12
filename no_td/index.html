@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+<title>Demo homepage</title>
+<script>
+  window.onload = function() {
+    var result_container = document.getElementById('result');
+    var result_text = ''; 
+    var invalid = false;
+    if (!navigator.joinAdInterestGroup) {
+      invalid = true;
+      result_text += "FLEDGE joinAdInterestGroup not enabled.";
+    }
+    result_text += "</br></br>";
+    if (!navigator.runAdAuction) {
+      invalid = true;
+      result_text += "FLEDGE runAdAuction seems not enabled.";
+    }
+    if (invalid) {
+      result_text = "<h2>Browser Check</h2>" + result_text;
+      result_text += "</br></br>";
+      result_text += "Please use a dev version of Chrome with right flags. Run this:</br></br>";
+      result_text += "  google-chrome-unstable --enable-features=AdInterestGroupAPI,InterestGroupStorage,Fledge,FencedFrames</br>";
+    }
+    result_container.innerHTML += result_text;
+};
+</script>
+</head>
+<body>
+  <div id="result">
+  </div>
+  <h2>Page with negative FLEDGE Permission Policy header:</h2>
+</body>
+</html>
